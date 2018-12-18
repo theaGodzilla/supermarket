@@ -30,6 +30,12 @@
                 font-size: 12px;
                 margin-top: 15px;
             }
+            .thegreen{
+                border: 1px solid green;
+            }
+            .thered{
+                border: 1px solid red;
+            }
             input::-webkit-input-placeholder { /* WebKit browsers */  
                 color: #ccc;  
               }
@@ -40,7 +46,7 @@
                 font-size: 12px;
                 padding-left: 10px;
             }
-            .thename{
+            span{
                 display: none;
                 font-size: 12px;
                 padding-left: 10px;
@@ -67,9 +73,40 @@
                 margin-bottom: 10px;
                 vertical-align: middle;
             }
+
+            .theremenber{
+                margin: 3px 0 0;
+            }
             .thecheck{
                 margin: 3px 0 0;
-                // margin-left: -20px;
+                width: 180px;
+                display: inline-block;
+                float: left;
+            }
+            .getemail{
+                display: inline-block;
+                border-radius: 5px;
+                -webkit-border-radius: 5px;
+                -webkit-font-smoothing: antialiased;
+                background-color: #222;
+                // border: 2px solid black;
+                font-family: montserrat,sans-serif;
+                font-size: .85em;
+                font-weight: 700;
+                letter-spacing: .1em;
+                color: #fff;
+                padding: 12px;
+                text-transform: uppercase;
+                margin: 3px 0 0 2px;
+                -webkit-transition: background-color .1s ease-out;
+                -moz-transition: background-color .1s ease-out;
+                transition: background-color .1s ease-out;
+                cursor: pointer;
+                border: 0;
+            }
+            .getemail:hover{
+                background-color: #41cac0;
+                // border: 2px solid white;
             }
         }
         .btn{
@@ -78,14 +115,15 @@
             text-transform: uppercase;
             font-weight: 300;
             font-family: 'Open Sans', sans-serif;
-            box-shadow: 0 4px #e56b60;
+            box-shadow: 0 4px #e56b60!important;
             margin-bottom: 20px;
             display: block;
             width: 100%;
             padding: 10px 16px;
-            font-size: 18px;
+            font-size: 18px!important;
             line-height: 1.33;
-            border-radius: 6px;
+            border-radius: 6px!important;
+            border: none!important;
         }
     }
 }

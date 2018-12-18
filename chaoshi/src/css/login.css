@@ -27,6 +27,10 @@
         box-shadow: none;
         font-size: 12px;
         margin-top: 15px; }
+      .containerLog .form-signin .login-wrap .thegreen {
+        border: 1px solid green; }
+      .containerLog .form-signin .login-wrap .thered {
+        border: 1px solid red; }
       .containerLog .form-signin .login-wrap input::-webkit-input-placeholder {
         /* WebKit browsers */
         color: #ccc; }
@@ -34,7 +38,7 @@
         display: none;
         font-size: 12px;
         padding-left: 10px; }
-      .containerLog .form-signin .login-wrap .thename {
+      .containerLog .form-signin .login-wrap span {
         display: none;
         font-size: 12px;
         padding-left: 10px; }
@@ -57,21 +61,48 @@
         margin-top: 15px;
         margin-bottom: 10px;
         vertical-align: middle; }
-      .containerLog .form-signin .login-wrap .thecheck {
+      .containerLog .form-signin .login-wrap .theremenber {
         margin: 3px 0 0; }
+      .containerLog .form-signin .login-wrap .thecheck {
+        margin: 3px 0 0;
+        width: 180px;
+        display: inline-block;
+        float: left; }
+      .containerLog .form-signin .login-wrap .getemail {
+        display: inline-block;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -webkit-font-smoothing: antialiased;
+        background-color: #222;
+        font-family: montserrat,sans-serif;
+        font-size: .85em;
+        font-weight: 700;
+        letter-spacing: .1em;
+        color: #fff;
+        padding: 12px;
+        text-transform: uppercase;
+        margin: 3px 0 0 2px;
+        -webkit-transition: background-color .1s ease-out;
+        -moz-transition: background-color .1s ease-out;
+        transition: background-color .1s ease-out;
+        cursor: pointer;
+        border: 0; }
+      .containerLog .form-signin .login-wrap .getemail:hover {
+        background-color: #41cac0; }
     .containerLog .form-signin .btn {
       background: #f67a6e;
       color: #fff;
       text-transform: uppercase;
       font-weight: 300;
       font-family: 'Open Sans', sans-serif;
-      box-shadow: 0 4px #e56b60;
+      box-shadow: 0 4px #e56b60 !important;
       margin-bottom: 20px;
       display: block;
       width: 100%;
       padding: 10px 16px;
-      font-size: 18px;
+      font-size: 18px !important;
       line-height: 1.33;
-      border-radius: 6px; }
+      border-radius: 6px !important;
+      border: none !important; }
 
 /*# sourceMappingURL=login.css.map */

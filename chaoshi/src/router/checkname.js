@@ -1,29 +1,12 @@
-//引入模块
+// 利用Express中的Router实现路由模块化
 const express = require('express');
 const mongodb = require('mongodb');
-
+let Router = express.Router();
 //获取mongo客户端
 const MongoClient = mongodb.MongoClient;
 
-let app = express();
-
-//静态资源服务器
-app.use(express.static('./'));
-
-//路由
-//注册
-app.get('/reg',(req,res)=>{
-
-})
-
-//登录
-app.get('/login',(req,res)=>{
-
-})
-
-//检测用户名
-app.get('/checkname',(req,res)=>{
-    //获取传来的用户名
+Router.get('/:username',(req,res)=>{
+    // 获取传来的用户名
     let {username} = req.query;
     //连接数据库
     MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
@@ -60,10 +43,6 @@ app.get('/checkname',(req,res)=>{
         //关闭数据库,避免资源浪费
         database.close();
     })
-
 })
 
-//监听端口
-app.listen(1717,()=>{
-    console.log('成功运行，http://localhost:1717')
-})
+module.exports = Router;
