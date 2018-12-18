@@ -190,13 +190,13 @@
           #container .aside .asideD .sidebar-menu li .sub li a:hover {
             color: #FF6C60; }
   #container .main-content {
-    display: inline-block;
-    width: 100%;
+    display: flex;
     margin-left: 180px; }
     #container .main-content .wrapper {
       display: inline-block;
       margin-top: 60px;
-      padding: 15px; }
+      padding: 15px;
+      width: 100%; }
       #container .main-content .wrapper .contentbiao {
         height: 25px;
         line-height: 25px; }
@@ -208,12 +208,15 @@
             content: "/\00a0";
             padding: 0 5px;
             color: #ccc; }
-    #container .main-content .content table {
-      text-align: left; }
-      #container .main-content .content table thead tr {
-        height: 25px;
-        line-height: 25px; }
-        #container .main-content .content table thead tr th {
-          width: 100px; }
+    #container .main-content .content {
+      width: 100%; }
+      #container .main-content .content table {
+        text-align: left;
+        width: 100%; }
+        #container .main-content .content table thead tr {
+          height: 25px;
+          line-height: 25px; }
+          #container .main-content .content table thead tr th {
+            width: 100px; }
 
 /*# sourceMappingURL=index.css.map */

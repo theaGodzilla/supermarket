@@ -80,7 +80,7 @@
                     <li>
                         <a href="">
                             <i class="iconfont icon-cogs"></i>
-                            <span>UI Elements</span>
+                            <span>订单管理</span>
                             <span class="izuo5"></span>
                         </a>
                         <ul class="sub">
@@ -98,7 +98,7 @@
                     <li>
                         <a href="">
                             <i class="iconfont icon-user"></i>
-                            <span>UI Elements</span>
+                            <span>用户管理</span>
                             <span class="izuo5"></span>
                         </a>
                         <ul class="sub">
@@ -138,11 +138,32 @@
                                 <th>删除</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody>
+                            <tr>
+                                <th></th>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </section>
     </div>
+    <script>
+        let assidebtn=document.querySelector('.sidebar-toggle-box');
+        let aside=document.querySelector('.aside');
+        let section = document.querySelector('.main-content');
+        let thebtn = false;
+        assidebtn.onclick = function(){
+            if( thebtn ){
+                aside.style.display='block';
+                section.style.marginLeft=180+'px';
+            }else{
+                aside.style.display='none';
+                section.style.marginLeft=0;
+            }
+            thebtn=!thebtn;
+        }
+    
+    </script>
 </body>
 </html>
