@@ -28,6 +28,8 @@
                     let btn = document.querySelector('.btn');
                     let username = document.querySelector('.username');
                     let password = document.querySelector('.password');
+                    let theremenber = document.querySelector('.theremenber');
+                    // console.log(theremenber.checked);
                     btn.onclick=function(){
                         var val1 = username.value;
                         var val2 = password.value;
@@ -37,8 +39,14 @@
                             var res = JSON.parse(xhr.responseText);
                             if( res.code == 0 ){
                                 var loginok = confirm('登录成功');
-                                if(loginok){
+                                if(loginok && theremenber.checked){
+                                    var now = new Date();
+                                    now.setDate(now.getDate()+999);
+                                    document.cookie='usname='+val1+';expries='+now+';path=/';
                                     location.href='../index.html';
+                                }else if(loginok){
+                                    location.href='../index.html';
+                                    document.cookie='usname='+val1+';path=/';
                                 }
                             }else{
                                 alert('登录失败');
