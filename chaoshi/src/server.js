@@ -173,6 +173,41 @@ function createSixNum(){
 }
 
 
+//列表渲染
+app.get('/lists',(req,res)=>{
+    //获取传来的用户名
+    //连接数据库
+    MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
+        //连接成功后执行回调函数
+        //如果有错误就抛出错误
+        if(err) throw err;
+
+        //使用某个数据库，没有就自动创建一个
+        let db = database.db('supermarket');
+
+        //使用数据库里面的集合（表）
+        let lists = db.collection('lists');
+
+        //查询是否存在数据
+        lists.find((err,result)=>{
+            console.log(result);
+            if(err){
+                res.send({
+                    code:0,
+                    data:[],
+                    msg:''
+                })
+            }else{
+                res.send({
+                    code:1,
+                    data:result,
+                    msg:''
+                })
+            }
+        })
+    })
+})
+
 //监听端口
 app.listen(1717,()=>{
     console.log('成功运行，http://localhost:1717')
