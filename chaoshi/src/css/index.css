@@ -1,3 +1,4 @@
+@charset "UTF-8";
 #container {
   clear: both;
   height: 100%; }
@@ -193,10 +194,11 @@
     display: flex;
     margin-left: 180px; }
     #container .main-content .wrapper {
-      display: inline-block;
+      display: none;
       margin-top: 60px;
-      padding: 15px;
-      width: 100%; }
+      padding: 15px 10px 0px 15px;
+      width: 100%;
+      /*按钮*/ }
       #container .main-content .wrapper .contentbiao {
         height: 25px;
         line-height: 25px; }
@@ -208,6 +210,47 @@
             content: "/\00a0";
             padding: 0 5px;
             color: #ccc; }
+      #container .main-content .wrapper .lists_page {
+        width: 230px;
+        height: 35px;
+        position: absolute;
+        left: 50%;
+        margin-left: 400px;
+        margin-top: 20px;
+        font-family: '微软雅黑'; }
+        #container .main-content .wrapper .lists_page span {
+          display: inline-block;
+          width: 32px;
+          height: 33px;
+          line-height: 33px;
+          text-align: center;
+          float: left;
+          margin-right: 10px;
+          border-radius: 2px;
+          cursor: pointer; }
+          #container .main-content .wrapper .lists_page span a {
+            display: inline-block;
+            width: 30px;
+            height: 32px;
+            line-height: 32px;
+            border-radius: 3px;
+            color: #999; }
+        #container .main-content .wrapper .lists_page .page_left {
+          border: 1px solid #d4d4d4;
+          background: #eaeaea;
+          cursor: default; }
+        #container .main-content .wrapper .lists_page .page_right {
+          border: 1px solid #d4d4d4;
+          background: #fff;
+          cursor: pointer; }
+        #container .main-content .wrapper .lists_page .pages a:hover {
+          border: 1px solid #ffa8b6;
+          background: #fdf3f3;
+          color: #FF6C60; }
+        #container .main-content .wrapper .lists_page .pages .lists_qty a {
+          border: 1px solid #f52648;
+          background: #FF6C60;
+          color: #fff; }
     #container .main-content .content {
       width: 100%; }
       #container .main-content .content table {
@@ -216,9 +259,8 @@
         #container .main-content .content table thead tr {
           height: 35px;
           line-height: 35px;
-          background: #ccc; }
+          background: #f0f0f8; }
           #container .main-content .content table thead tr th {
-            width: 100px;
             text-align: center; }
           #container .main-content .content table thead tr th:nth-child(1) {
             width: 30px;
@@ -239,13 +281,15 @@
           #container .main-content .content table thead tr .goods_category {
             width: 50px; }
           #container .main-content .content table thead tr .goods_name {
-            width: 150px; }
+            width: 120px; }
           #container .main-content .content table thead tr .goods_unit {
             width: 50px; }
           #container .main-content .content table thead tr .goods_stock {
             width: 50px; }
           #container .main-content .content table thead tr .goods_del {
             width: 50px; }
+          #container .main-content .content table thead tr .goods_up {
+            width: 80px; }
         #container .main-content .content table tbody tr {
           height: 100px;
           border: 1px dotted #c2c2c2;
@@ -254,7 +298,6 @@
           font-size: 13px;
           color: #666; }
           #container .main-content .content table tbody tr td {
-            width: 100px;
             text-align: center; }
           #container .main-content .content table tbody tr td:nth-child(1) {
             width: 30px;
@@ -278,22 +321,58 @@
               opacity: 0;
               z-index: 10;
               transition: opacity .5s; }
-            #container .main-content .content table tbody tr .goods_img:hover .smallimg {
-              opacity: 1; }
           #container .main-content .content table tbody tr .goods_id {
             width: 20px; }
           #container .main-content .content table tbody tr .goods_category {
             width: 50px; }
           #container .main-content .content table tbody tr .goods_name {
-            width: 150px; }
+            width: 120px; }
           #container .main-content .content table tbody tr .goods_unit {
             width: 50px; }
           #container .main-content .content table tbody tr .goods_stock {
             width: 50px; }
           #container .main-content .content table tbody tr .goods_del {
-            width: 50px;
-            cursor: pointer; }
-            #container .main-content .content table tbody tr .goods_del .update:hover, #container .main-content .content table tbody tr .goods_del .del:hover {
-              color: #FCB322; }
+            width: 50px; }
+            #container .main-content .content table tbody tr .goods_del i {
+              display: inline-block;
+              width: 40px;
+              height: 22px;
+              cursor: pointer;
+              background: #f0f0f8;
+              border-radius: 3px;
+              border: 1px solid #ccc;
+              box-shadow: 0px 0px 3px #c2c2c2; }
+              #container .main-content .content table tbody tr .goods_del i:nth-child(1):hover {
+                background: #FCB322;
+                color: #fff;
+                border: 1px solid #faeda6;
+                box-shadow: 0px 0px 3px #f0f0f8; }
+              #container .main-content .content table tbody tr .goods_del i:nth-child(2):hover {
+                background: #f52648;
+                color: #fff;
+                border: 1px solid #faeda6;
+                box-shadow: 0px 0px 3px #f0f0f8; }
+          #container .main-content .content table tbody tr .goods_up {
+            width: 80px; }
+            #container .main-content .content table tbody tr .goods_up span {
+              display: inline-block;
+              width: 50px;
+              height: 22px;
+              line-height: 22px;
+              border-radius: 3px;
+              cursor: pointer; }
+            #container .main-content .content table tbody tr .goods_up .uplists {
+              background: #FF6C60;
+              box-shadow: 0px 0px 3px #ff6c60;
+              color: #fff;
+              border: 1px solid #faeda6; }
+            #container .main-content .content table tbody tr .goods_up .downlists {
+              display: none;
+              background: #FF6C60;
+              color: #fff;
+              border: 1px solid #faeda6;
+              box-shadow: 0px 0px 3px #ff6c60; }
+        #container .main-content .content table tbody tr:nth-child(even) {
+          background: #fdf3f3; }
 
 /*# sourceMappingURL=index.css.map */
