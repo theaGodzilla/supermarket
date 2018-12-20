@@ -175,7 +175,11 @@ function createSixNum(){
 
 //列表渲染
 app.get('/lists',(req,res)=>{
-    //获取传来的用户名
+    //获取传来的数据
+    console.log(req.query);
+    let {pages,qtys} = req.query;
+    let qty = Number(qtys);
+    let page =  (Number(pages)-1)*qty;
     //连接数据库
     MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
         //连接成功后执行回调函数
@@ -188,25 +192,47 @@ app.get('/lists',(req,res)=>{
         //使用数据库里面的集合（表）
         let lists = db.collection('lists');
 
-        //查询是否存在数据
-        lists.find((err,result)=>{
+        //查询数据
+        lists.find().limit(qty).skip(page).toArray((err,result)=>{
             console.log(result);
-            if(err){
-                res.send({
-                    code:0,
-                    data:[],
-                    msg:''
-                })
-            }else{
-                res.send({
-                    code:1,
-                    data:result,
-                    msg:''
-                })
-            }
+            res.send({
+                data:result, // 数据
+                page:page, // （页数-1）*条数，开始的值
+                qty:qty // 每一页几条
+            });
         })
+
     })
 })
+
+//列表按钮
+app.get('/listsBtn',(req,res)=>{
+    // 获取前端数据
+    let {page} = req.query;
+    //连接数据库
+    MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
+        //连接成功后执行回调函数
+        //如果有错误就抛出错误
+        if(err) throw err;
+
+        //使用某个数据库，没有就自动创建一个
+        let db = database.db('supermarket');
+
+        //使用数据库里面的集合（表）
+        let lists = db.collection('lists');
+
+        //查询数据
+        lists.find().toArray((err,result)=>{
+            console.log(result);
+            res.send({
+                page: page, // 页数
+                data:result // 数据
+            });
+        })
+
+    })
+})
+
 
 //监听端口
 app.listen(1717,()=>{

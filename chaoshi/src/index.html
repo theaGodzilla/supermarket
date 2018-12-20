@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="iconfont/iconfont.css">
+    <link rel="stylesheet" href="./icon/icon01/iconfont.css">
 </head>
+
 <body>
     <div id="container">
         <header class="header white-bg">
@@ -17,17 +20,17 @@
             <div class="nav">
                 <ul class="top-menu">
                     <li><a href="">
-                        <i class="iconfont icon-tasks"></i>
-                        <span class="badge bg-success">0</span>
-                    </a></li>
+                            <i class="iconfont icon-tasks"></i>
+                            <span class="badge bg-success">0</span>
+                        </a></li>
                     <li><a href="">
-                        <i class="iconfont icon-envelope"></i>
-                        <span class="badge bg-important">0</span>
-                    </a></li>
+                            <i class="iconfont icon-envelope"></i>
+                            <span class="badge bg-important">0</span>
+                        </a></li>
                     <li><a href="">
-                        <i class="iconfont icon-bell"></i>
-                        <span class="badge bg-warning">0</span>
-                    </a></li>
+                            <i class="iconfont icon-bell"></i>
+                            <span class="badge bg-warning">0</span>
+                        </a></li>
                 </ul>
             </div>
             <div class="top-nav">
@@ -45,7 +48,7 @@
                             <a href="html/login.html">登录</a>
                             <a href="html/reg.html">注册</a>
                         </div>
-                        
+
                     </li>
                 </ul>
             </div>
@@ -138,10 +141,11 @@
                                 <th class="goods_unit">单价</th>
                                 <th class="goods_stock">库存</th>
                                 <th class="goods_del">操作</th>
+                                <th class="goods_up">备注</th>
                             </tr>
                         </thead>
                         <tbody id="tbody">
-                            <tr>
+                            <!-- <tr>
                                 <td>
                                     <input type="checkbox">
                                 </td>
@@ -149,41 +153,55 @@
                                 <td class="goods_img">
                                     <img src="./img/latiao.jpg" alt="" style="width: 70px;height: 90px;border: 1px solid #ccc;">
                                     <img src="./img/latiao.jpg" class="smallimg" alt="" style="width: 150px;height: 180px;border: 1px solid #ccc;">
-                                </td>                         
+                                </td>
                                 <td class="goods_name">【三只松鼠_辣条大礼包组合】怀旧麻辣零食网红儿时小吃大辣片</td>
                                 <td class="goods_category">辣条组合</td>
                                 <td class="goods_unit">￥24.9</td>
                                 <td class="goods_stock">20</td>
                                 <td class="goods_del">
-                                    <span class="update">编辑</span>
-                                    |
-                                    <span class="del">删除</span>
+                                    <i class="iconfont icon-caozuo" title="编辑"></i>
+                                    <i class="iconfont icon-hekriconshanchu" title="删除"></i>
                                 </td>
-                            </tr>
-                            
+                                <td class="goods_up">
+                                    <span class="uplists">未上架</span>
+                                    <span class="downlists">下架</span>
+                                </td>
+                            </tr> -->
+
                         </tbody>
                     </table>
+
+                </div>
+                <div class="lists_page">
+                    <span class="page_left" id="btn_prev"><</span> 
+                    <div class="pages" id="pages">
+                        <!-- <span class="lists_qty"><a href="#">1</a> </span>
+                        <span><a href="#">2</a></span>
+                        <span><a href="#">3</a></span> -->
+                    </div>
+                    <span class="page_right" id="btn_next">></span>
                 </div>
             </div>
         </section>
     </div>
     <script>
-        let assidebtn=document.querySelector('.sidebar-toggle-box');
-        let aside=document.querySelector('.aside');
+        let assidebtn = document.querySelector('.sidebar-toggle-box');
+        let aside = document.querySelector('.aside');
         let section = document.querySelector('.main-content');
         let thebtn = false;
-        assidebtn.onclick = function(){
-            if( thebtn ){
-                aside.style.display='block';
-                section.style.marginLeft=180+'px';
-            }else{
-                aside.style.display='none';
-                section.style.marginLeft=0;
+        assidebtn.onclick = function () {
+            if (thebtn) {
+                aside.style.display = 'block';
+                section.style.marginLeft = 180 + 'px';
+            } else {
+                aside.style.display = 'none';
+                section.style.marginLeft = 0;
             }
-            thebtn=!thebtn;
+            thebtn = !thebtn;
         }
-    
     </script>
 </body>
+
 <script src="./js/index.js"></script>
+
 </html>
