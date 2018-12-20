@@ -310,49 +310,51 @@
         let self = document.querySelector('.self');
         var name = document.cookie.split('=')[1];
         nickusname.innerHTML='账号：'+name;
-        var xhr =new XMLHttpRequest();
-        xhr.onload=function(){
-            if(xhr.status == 200){
-                var res = JSON.parse(xhr.responseText).data[0];
-                console.log(res);
-                // console.log(res.thename);
-                var html ='';
-                html=`
-                    <li>昵称：${res.thename}</li>
-                    <li>实名：${res.chname}</li>
-                    <li>性别：${res.gender}</li>
-                    <li>生日：${res.birthday}</li>
-                    <li>行业：${res.wordlist}</li>
-                    <li>职业：${res.word}</li>
-                    <li>简介：${res.more}</li>
-                `;
-                self.innerHTML=html;
-                userlist(res);
-                console.log($('.ng-pristine').val());
-                $('.sumit').click(function(){
-                    var diathename=$('.dianame').val();
-                    var diachname=$('.diachname').val();
-                    var diaword=$('.diaword').val();
-                    var diasex=$('.diasex').val();
-                    var birthday=$('.wui-input').val();
-                    var diawordlist=$('.diawordlist').val();
-                    var diamore=$('.diamore').val();
-                    // console.log($('.ng-pristine').val());
-                    var url = '/revise';
-                    var data = `name=${name}&thename=${diathename}&chname=${diachname}&word=${diaword}&gender=${diasex}&birthday=${birthday}&wordlist=${diawordlist}&more=${diamore}`;
-                    ajax('GET',url,data,function(str){
-                        console.log(str);
-                    })
-                    dialog.style.display='none';
-                    dialognone = false;
-                    location.reload();
 
-                })
-                
+        function userinfo(){
+            var xhr =new XMLHttpRequest();
+            xhr.onload=function(){
+                if(xhr.status == 200){
+                    var res = JSON.parse(xhr.responseText).data[0];
+                    console.log(res);
+                    // console.log(res.thename);
+                    var html ='';
+                    html=`
+                        <li>昵称：${res.thename}</li>
+                        <li>实名：${res.chname}</li>
+                        <li>性别：${res.gender}</li>
+                        <li>生日：${res.birthday}</li>
+                        <li>行业：${res.wordlist}</li>
+                        <li>职业：${res.word}</li>
+                        <li>简介：${res.more}</li>
+                    `;
+                    self.innerHTML=html;
+                    userlist(res);
+                    console.log($('.ng-pristine').val());
+                    $('.sumit').click(function(){
+                        var diathename=$('.dianame').val();
+                        var diachname=$('.diachname').val();
+                        var diaword=$('.diaword').val();
+                        var diasex=$('.diasex').val();
+                        var birthday=$('.wui-input').val();
+                        var diawordlist=$('.diawordlist').val();
+                        var diamore=$('.diamore').val();
+                        var url = '/revise';
+                        var data = `name=${name}&thename=${diathename}&chname=${diachname}&word=${diaword}&gender=${diasex}&birthday=${birthday}&wordlist=${diawordlist}&more=${diamore}`;
+                        ajax('GET',url,data,function(str){
+                            console.log(str);
+                        });
+                        dialog.style.display='none';
+                        dialognone = false;
+                        userinfo();
+                    })
+                    
+                }
             }
+            xhr.open('GET','/euit?username='+name,true);
+            xhr.send();
         }
-        xhr.open('GET','/euit?username='+name,true);
-        xhr.send();
+        userinfo();
         function userlist(res){
             var x = res.gender;
             $('.dianame').val(res.thename);
@@ -367,7 +369,8 @@
         // $('.sumit').click(function(){
         //     dialog.style.display='none';
         //     dialognone = false;
-            
+        //     userinfo();
+        //     // location.reload();
         // })
         
 
