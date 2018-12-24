@@ -403,6 +403,46 @@ app.get('/udlists',(req,res)=>{
     })
 })
 
+// 上下架
+app.get('/checkgrounding',(req,res)=>{
+    // 获取前端数据
+    let {SN}  = req.query;
+    let LSN = Number(SN);
+    // 连接数据库
+    MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
+        //连接成功后执行回调函数
+        //如果有错误就抛出错误
+        if(err) throw err;
+
+        //使用某个数据库，没有就自动创建一个
+        let db = database.db('supermarket');
+
+        //使用数据库里面的集合（表）
+        let grounding = db.collection('grounding');
+
+        // 查询上下架的数据表中
+        grounding.find().toArray((err,result)=>{
+            // console.log(result);
+            // 如果数据表中不存在这条数据
+            if(result){
+                res.send({
+                    code:1,
+                    data:result,
+                    msg:'存在'
+                })
+            }else{
+                res.send({
+                    code:0,
+                    data:result,
+                    msg:'不存在'
+                })
+            }
+            
+        })
+
+    })
+})
+
 // 更新商品序列
 // app.get('/updateSN',(req,res)=>{
 //     // 获取前端数据

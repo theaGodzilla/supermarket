@@ -13,7 +13,7 @@ var html = '';
 
 function create(str) {
     html += `
-    <tr>
+    <tr name="${str.SN}">
         <td>
             <input type="checkbox">
         </td>
@@ -37,6 +37,31 @@ function create(str) {
     </tr>
     `;
 
+    var tbodys = tbody.children; // 所有的tr
+    xhr.open('GET', '/checkgrounding', true);
+    xhr.send();
+    xhr.onload = () => {
+        if (xhr.status == 200) {
+            // console.log(xhr.responseText)
+            var res = JSON.parse(xhr.responseText);
+            var data = res.data;
+            if (res.code == 1) {
+                for (var i = 0; i < data.length; i++) {
+                    // console.log(data[i].SN)
+                    var GLSN = data[i].SN;
+                    for (var j = 0; j < tbodys.length; j++) {
+                        if (tbodys[j].getAttribute('name') == GLSN) {
+                            // console.log(j);
+                            tbodys[j].lastElementChild.children[0].style.background = '#fcb322';
+                            tbodys[j].lastElementChild.children[0].innerHTML = '已上架';
+                            tbodys[j].lastElementChild.children[1].style.display = 'inline-block';
+                        }
+                    }
+                }
+
+            }
+        }
+    }
 }
 
 // 连接列表表格的渲染 一页6条数据
@@ -315,7 +340,7 @@ function Edit() {
             // 删除并更新序列号
             if (target.className == 'iconfont icon-hekriconshanchu') {
                 var ensure = confirm('确定要删除这条数据？');
-                if(ensure){
+                if (ensure) {
                     var goods_SN = target.getAttribute('name');
                     xhr.open('GET', '/dellists?goodsSN=' + goods_SN, true);
                     xhr.send();
@@ -334,8 +359,8 @@ function Edit() {
                             //             // console.log(xhr.responseText);
                             //             var res = JSON.parse(xhr.responseText);
                             //             if(res.code == 1){
-                                            // show();
-                                            // btn();
+                            // show();
+                            // btn();
                             //             }
                             //         }
                             //     }
@@ -345,27 +370,27 @@ function Edit() {
                 }
             }
             // 上架
-            if(target.className == 'uplists'){
+            if (target.className == 'uplists') {
                 var goods_SN = target.getAttribute('name');
-                xhr.open('GET','/checkedit?goodsSN='+goods_SN,true);
+                xhr.open('GET', '/checkedit?goodsSN=' + goods_SN, true);
                 xhr.send();
-                xhr.onload = ()=>{
-                    if(xhr.status == 200){
+                xhr.onload = () => {
+                    if (xhr.status == 200) {
                         var res = JSON.parse(xhr.responseText);
                         var code = res.code;
                         var data = res.data;
-                        if(code==1){
-                            var url = `/udlists?SN=${data.SN}&imgurl=${data.goodsimgUrl}&name=${data.goodsname}&category=${data.goodscategory}&unit=${data.goodsunit}&stock=${data.goodstock}`;
-                            xhr.open('GET',url,true);
+                        if (code == 1) {
+                            var url = `/udlists?SN=${encodeURI(data.SN)}&imgurl=${encodeURI(data.goodsimgUrl)}&name=${encodeURI(data.goodsname)}&category=${encodeURI(data.goodscategory)}&unit=${encodeURI(data.goodsunit)}&stock=${encodeURI(data.goodstock)}`;
+                            xhr.open('GET', url, true);
                             xhr.send();
-                            xhr.onload = ()=>{
-                                if(xhr.status == 200){
+                            xhr.onload = () => {
+                                if (xhr.status == 200) {
                                     // console.log(xhr.responseText);
                                     var arr = JSON.parse(xhr.responseText);
-                                    if(arr.code==1){
-                                        var date = new Date();
-                                        date.setDate(date.getDate()+999);
-                                        document.cookie = 'statusstyle'+goods_SN+'='+goods_SN+';expires='+date;               
+                                    if (arr.code == 1) {
+                                        // var date = new Date();
+                                        // date.setDate(date.getDate()+999);
+                                        // document.cookie = 'statusstyle'+goods_SN+'='+goods_SN+';expires='+date;               
                                         target.style.background = '#fcb322';
                                         target.innerHTML = '已上架';
                                         target.nextElementSibling.style.display = 'inline-block';
@@ -377,17 +402,17 @@ function Edit() {
                 }
             }
             // 下架
-            if(target.className == 'downlists'){
-                var goods_SN = target.getAttribute('name');                
-                xhr.open('GET','udlists?SN='+goods_SN,true);
+            if (target.className == 'downlists') {
+                var goods_SN = target.getAttribute('name');
+                xhr.open('GET', 'udlists?SN=' + goods_SN, true);
                 xhr.send();
-                xhr.onload = ()=>{
+                xhr.onload = () => {
                     // console.log(xhr.responseText);
                     var arr = JSON.parse(xhr.responseText);
-                    if(arr.code == 0){
-                        var date = new Date();
-                        date.setDate(date.getDate()-1);
-                        document.cookie = 'statusstyle'+goods_SN+'='+goods_SN+';expires='+date;               
+                    if (arr.code == 0) {
+                        // var date = new Date();
+                        // date.setDate(date.getDate()-1);
+                        // document.cookie = 'statusstyle'+goods_SN+'='+goods_SN+';expires='+date;               
                         target.previousElementSibling.style.background = '#FF6C60';
                         target.previousElementSibling.innerHTML = '未上架';
                         target.style.display = 'none';
@@ -399,15 +424,16 @@ function Edit() {
         //  存在上下架的状态情况 
         // console.log(tbodys[i].lastElementChild.children[0]);
         // console.log((page-1)*qtys+i+1)
-        var statusnum = (page-1)*qtys+i+1;
-        if(Cookie.get('statusstyle'+statusnum)){    
-            tbodys[i].lastElementChild.children[0].style.background = '#fcb322';
-            tbodys[i].lastElementChild.children[0].innerHTML = '已上架';
-            tbodys[i].lastElementChild.children[1].style.display = 'inline-block';
-        }
+        // var statusnum = (page-1)*qtys+i+1;
+        // if(Cookie.get('statusstyle'+statusnum)){    
+        //     tbodys[i].lastElementChild.children[0].style.background = '#fcb322';
+        //     tbodys[i].lastElementChild.children[0].innerHTML = '已上架';
+        //     tbodys[i].lastElementChild.children[1].style.display = 'inline-block';
+        // }
+
+
     }
 
-    
 }
 
 // 取消编辑框
