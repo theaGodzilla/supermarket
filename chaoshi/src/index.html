@@ -162,7 +162,7 @@
             </div> -->
 
             <!-- 用户设置 -->
-            <div class="view-container">
+            <!-- <div class="view-container">
                 <div class="">
                     <div class="cont">
                         <h3 class="cont-title">个人资料</h3>
@@ -177,61 +177,62 @@
                                     <span class="mod">修改资料</span>
                                 </div>
                                 <ul class="self">
-                                    <!-- <li>昵称：哥斯拉</li>
+                                    <li>昵称：哥斯拉</li>
                                     <li>实名：哥斯拉</li>
                                     <li>性别：女</li>
                                     <li>生日：1996.07.18</li>
                                     <li>行业：</li>
                                     <li>职业：</li>
-                                    <li>简介：</li> -->
+                                    <li>简介：</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="dialog">
-                <div class="dialog-con">
-                    <div class="box">
-                        <h3>修改资料</h3>
-                        <span class="close">×</span>
-                    </div>
-                    <ul class="dialog-ul">
-                        <li><label>昵称</label>：<input type="text" class="dianame"></li>
-                        <li><label>实名</label>：<input type="text" class="diachname"></li>
-                        <li><label>职位</label>：<input type="text" class="diaword"></li>
-                        <li><label>性别</label>：
-                            <select class="diasex">
-                                <option value="男">男</option>
-                                <option value="女">女</option>
-                            </select>
-                        </li>
-                        <li>
-                            <label>生日</label>：<div class="wui-area" style="margin-bottom: 0;position: absolute;">
-                                <wui-date 
-                                    format="yyyy-mm-dd" 
-                                    placeholder="请选择或输入日期" 
-                                    id="date1" 
-                                    btns="{'ok':'确定','now':'此刻'}" 
-                                    ng-model="date1"
-                                >
-                                </wui-date>
-                            </div>
-                        </li>
-                        <li><label>行业</label>：<input type="text"  class="diawordlist"></li>
-                        <li><label>简介</label>：<textarea  class="diamore"></textarea></li>
-                    </ul>
-                    <div class="btn_group">
-                        <input type="button" value="确定"  class="sumit">
-                        <input type="button" value="取消">
-                    </div>
-                </div>  
-            </div>
-            <script type="text/javascript">
-                var app = angular.module('app',["wui.date"]);
-            </script>
+            </div> -->
+           
         </section>
         <!-- 修改资料 -->
+        <div class="dialog">
+            <div class="dialog-con">
+                <div class="box">
+                    <h3>修改资料</h3>
+                    <span class="close">×</span>
+                </div>
+                <ul class="dialog-ul">
+                    <li><label>昵称</label>：<input type="text" class="dianame"></li>
+                    <li><label>实名</label>：<input type="text" class="diachname"></li>
+                    <li><label>职位</label>：<input type="text" class="diaword"></li>
+                    <li><label>性别</label>：
+                        <select class="diasex">
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>生日</label>：<div class="wui-area" style="margin-bottom: 0;position: absolute;">
+                            <wui-date 
+                                format="yyyy-mm-dd" 
+                                placeholder="请选择或输入日期" 
+                                id="date1" 
+                                btns="{'ok':'确定','now':'此刻'}" 
+                                ng-model="date1"
+                            >
+                            </wui-date>
+                        </div>
+                    </li>
+                    <li><label>行业</label>：<input type="text"  class="diawordlist"></li>
+                    <li><label>简介</label>：<textarea  class="diamore"></textarea></li>
+                </ul>
+                <div class="btn_group">
+                    <input type="button" value="确定"  class="sumit">
+                    <input type="button" value="取消">
+                </div>
+            </div>  
+        </div>
+        <script type="text/javascript">
+            var app = angular.module('app',["wui.date"]);
+        </script>
         
     </div>
     <script>
@@ -283,34 +284,46 @@
         })
 
         //修改资料
+        var maincon=document.querySelector('.main-content');
+        // console.log(maincon);
         let Edit = document.querySelector('.Edit');
         let Quit = document.querySelector('.Quit');
         let close = document.querySelector('.close');
+        console.log(close);
         let dialog = document.querySelector('.dialog');
-        let viewcontainer = document.querySelector('.view-container');
-        let mod = document.querySelector('.mod');
+        // let viewcontainer = document.querySelector('.view-container');
+        // let mod = maincon.querySelector('.mod');
+        // console.log(mod);
         let dialognone = false;
         Edit.onclick=function(){
-            viewcontainer.style.display='block';
-            mod.onclick=function(){
+            userinfo();
+            $(document).on('click','.mod',()=>{
+                // console.log('修改');
                 dialog.style.display='block';
                 dialognone = true;
-                close.onclick=()=>{
-                    dialognone=!dialognone;
-                    if(dialognone){
-                        dialog.style.display='block';
-                    }else{
-                        dialog.style.display='none';
-                    }
+            })
+            close.onclick=()=>{
+                dialognone=!dialognone;
+                if(dialognone){
+                    dialog.style.display='block';
+                }else{
+                    dialog.style.display='none';
                 }
             }
         }
+        
+        
+        
         //渲染
-        let nickusname = document.querySelector('.nickusname');
-        let self = document.querySelector('.self');
-        var name = document.cookie.split('=')[1];
-        nickusname.innerHTML='账号：'+name;
-
+        // let nickusname = document.querySelector('.nickusname');
+        // let self = document.querySelector('.self');
+        // var name = document.cookie.split('=')[1];
+        // nickusname.innerHTML='账号：'+name;
+        // var viewcon=document.querySelector('.view-container');
+        // console.log(viewcon);
+        
+        
+        //封装
         function userinfo(){
             var xhr =new XMLHttpRequest();
             xhr.onload=function(){
@@ -320,18 +333,38 @@
                     // console.log(res.thename);
                     var html ='';
                     html=`
-                        <li>昵称：${res.thename}</li>
-                        <li>实名：${res.chname}</li>
-                        <li>性别：${res.gender}</li>
-                        <li>生日：${res.birthday}</li>
-                        <li>行业：${res.wordlist}</li>
-                        <li>职业：${res.word}</li>
-                        <li>简介：${res.more}</li>
+                    <div class="view-container">
+                        <div class="">
+                            <div class="cont">
+                                <h3 class="cont-title">个人资料</h3>
+                                <div class="user-info">
+                                    <div class="userheader">
+                                        <img src="img/thepink.jpg" alt="">
+                                        <p class="modify">修改头像</p>
+                                    </div>
+                                    <div class="right_c">
+                                        <div class="nick">
+                                            <span class="nickusname">昵称：${name}</span>
+                                            <span class="mod">修改资料</span>
+                                        </div>
+                                        <ul class="self">
+                                            <li>昵称：${res.thename}</li>
+                                            <li>实名：${res.chname}</li>
+                                            <li>性别：${res.gender}</li>
+                                            <li>生日：${res.birthday}</li>
+                                            <li>行业：${res.wordlist}</li>
+                                            <li>职业：${res.word}</li>
+                                            <li>简介：${res.more}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     `;
-                    self.innerHTML=html;
+                    maincon.innerHTML=html;
                     userlist(res);
-                    console.log($('.ng-pristine').val());
-                    $('.sumit').click(function(){
+                    $(document).on('click','.sumit',function(){
                         var diathename=$('.dianame').val();
                         var diachname=$('.diachname').val();
                         var diaword=$('.diaword').val();
@@ -343,18 +376,18 @@
                         var data = `name=${name}&thename=${diathename}&chname=${diachname}&word=${diaword}&gender=${diasex}&birthday=${birthday}&wordlist=${diawordlist}&more=${diamore}`;
                         ajax('GET',url,data,function(str){
                             console.log(str);
+                            userinfo();
                         });
-                        userinfo();
                         dialog.style.display='none';
                         dialognone = false;
                     })
-                    
+                    // maincon.innerHTML=maincon;
                 }
             }
             xhr.open('GET','/euit?username='+name,true);
             xhr.send();
         }
-        userinfo();
+        // 修改资料表单的列表
         function userlist(res){
             var x = res.gender;
             $('.dianame').val(res.thename);
@@ -364,11 +397,9 @@
             $('.wui-input').val(res.birthday);
             $('.diawordlist').val(res.wordlist);
             $('.diamore').val(res.more);
-            
         }
-        // $('.sumit').click(function(){
-            
-        // })
+
+        
         
 
 

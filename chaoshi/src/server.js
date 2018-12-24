@@ -221,7 +221,7 @@ app.get('/revise',(req,res)=>{
         //查询是否存在数据
         user.update({name},{$set:{thename,chname,word,gender,birthday,wordlist,more}},(err,result)=>{
             if(err) throw err;
-            console.log(result);
+            // console.log(result);
             res.send({
                 code:0,
                 data:[result],

@@ -242,7 +242,6 @@
             #container .main-content .wrapper .content table thead tr th {
               width: 100px; }
     #container .main-content .view-container {
-      display: none;
       width: 100%;
       padding: 0 115px 30px;
       margin-top: 60px; }
@@ -295,91 +294,91 @@
             line-height: 32px;
             font-size: 14px;
             color: #4d4d4d; }
-    #container .main-content .dialog {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 9999; }
-      #container .main-content .dialog .dialog-con {
-        width: 502px;
-        height: 474px;
-        margin: 100px auto;
-        background: #fff;
-        padding: 16px;
-        box-sizing: border-box; }
-        #container .main-content .dialog .dialog-con .box {
-          overflow: hidden; }
-          #container .main-content .dialog .dialog-con .box h3 {
-            font-size: 16px;
-            color: #3d3d3d;
+  #container .dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999; }
+    #container .dialog .dialog-con {
+      width: 502px;
+      height: 474px;
+      margin: 100px auto;
+      background: #fff;
+      padding: 16px;
+      box-sizing: border-box; }
+      #container .dialog .dialog-con .box {
+        overflow: hidden; }
+        #container .dialog .dialog-con .box h3 {
+          font-size: 16px;
+          color: #3d3d3d;
+          float: left;
+          height: 24px;
+          line-height: 24px;
+          font-weight: 700; }
+        #container .dialog .dialog-con .box .close {
+          color: #999;
+          font-size: 16px;
+          float: right;
+          cursor: pointer;
+          width: 24px;
+          height: 24px;
+          text-align: center; }
+      #container .dialog .dialog-con .dialog-ul {
+        padding-left: 10px; }
+        #container .dialog .dialog-con .dialog-ul li {
+          width: 100%;
+          overflow: hidden;
+          line-height: 34px;
+          padding: 3px 0;
+          margin-bottom: 0 !important; }
+          #container .dialog .dialog-con .dialog-ul li label {
+            margin-right: 5px;
+            height: 32px;
             float: left;
-            height: 24px;
-            line-height: 24px;
-            font-weight: 700; }
-          #container .main-content .dialog .dialog-con .box .close {
-            color: #999;
-            font-size: 16px;
-            float: right;
-            cursor: pointer;
-            width: 24px;
-            height: 24px;
-            text-align: center; }
-        #container .main-content .dialog .dialog-con .dialog-ul {
-          padding-left: 10px; }
-          #container .main-content .dialog .dialog-con .dialog-ul li {
-            width: 100%;
-            overflow: hidden;
-            line-height: 34px;
-            padding: 3px 0;
-            margin-bottom: 0 !important; }
-            #container .main-content .dialog .dialog-con .dialog-ul li label {
-              margin-right: 5px;
-              height: 32px;
-              float: left;
-              font-size: 14px;
-              color: #4d4d4d; }
-            #container .main-content .dialog .dialog-con .dialog-ul li select {
-              border-radius: 5px;
-              height: 32px;
-              width: 50px;
-              border-color: #dcdfe6;
-              margin-left: -3px; }
-            #container .main-content .dialog .dialog-con .dialog-ul li textarea {
-              width: 330px;
-              height: 110px;
-              vertical-align: top;
-              border-radius: 5px;
-              border-color: #dcdfe6;
-              margin-top: 2px; }
-            #container .main-content .dialog .dialog-con .dialog-ul li input {
-              width: 170px !important;
-              height: 32px !important;
-              -webkit-appearance: none;
-              background-color: #fff;
-              background-image: none;
-              border-radius: 4px;
-              border: 1px solid #dcdfe6;
-              box-sizing: border-box;
-              color: #606266;
-              display: inline-block;
-              font-size: inherit;
-              height: 40px;
-              line-height: 40px;
-              outline: 0;
-              transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
-            #container .main-content .dialog .dialog-con .dialog-ul li .wui-area {
-              display: inline-block; }
-              #container .main-content .dialog .dialog-con .dialog-ul li .wui-area .icon1 {
-                top: 30% !important; }
-        #container .main-content .dialog .dialog-con .btn_group {
-          margin-top: 25px;
-          text-align: right; }
-          #container .main-content .dialog .dialog-con .btn_group input:nth-child(1) {
-            background: #41cac0;
-            color: white; }
+            font-size: 14px;
+            color: #4d4d4d; }
+          #container .dialog .dialog-con .dialog-ul li select {
+            border-radius: 5px;
+            height: 32px;
+            width: 50px;
+            border-color: #dcdfe6;
+            margin-left: -3px; }
+          #container .dialog .dialog-con .dialog-ul li textarea {
+            width: 330px;
+            height: 110px;
+            vertical-align: top;
+            border-radius: 5px;
+            border-color: #dcdfe6;
+            margin-top: 2px; }
+          #container .dialog .dialog-con .dialog-ul li input {
+            width: 170px !important;
+            height: 32px !important;
+            -webkit-appearance: none;
+            background-color: #fff;
+            background-image: none;
+            border-radius: 4px;
+            border: 1px solid #dcdfe6;
+            box-sizing: border-box;
+            color: #606266;
+            display: inline-block;
+            font-size: inherit;
+            height: 40px;
+            line-height: 40px;
+            outline: 0;
+            transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
+          #container .dialog .dialog-con .dialog-ul li .wui-area {
+            display: inline-block; }
+            #container .dialog .dialog-con .dialog-ul li .wui-area .icon1 {
+              top: 30% !important; }
+      #container .dialog .dialog-con .btn_group {
+        margin-top: 25px;
+        text-align: right; }
+        #container .dialog .dialog-con .btn_group input:nth-child(1) {
+          background: #41cac0;
+          color: white; }
 
 /*# sourceMappingURL=index.css.map */
