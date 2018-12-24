@@ -173,7 +173,7 @@ function createSixNum(){
 }
 
 
-//列表渲染
+// 列表渲染
 app.get('/lists',(req,res)=>{
     //获取传来的数据
     console.log(req.query);
@@ -193,7 +193,7 @@ app.get('/lists',(req,res)=>{
         let lists = db.collection('lists');
 
         //查询数据
-        lists.find().limit(qty).skip(page).toArray((err,result)=>{
+        lists.find().limit(qty).skip(page).sort({SN:1}).toArray((err,result)=>{
             console.log(result);
             res.send({
                 data:result, // 数据
@@ -205,7 +205,7 @@ app.get('/lists',(req,res)=>{
     })
 })
 
-//列表按钮
+// 列表按钮
 app.get('/listsBtn',(req,res)=>{
     // 获取前端数据
     let {page} = req.query;
@@ -222,7 +222,7 @@ app.get('/listsBtn',(req,res)=>{
         let lists = db.collection('lists');
 
         //查询数据
-        lists.find().toArray((err,result)=>{
+        lists.find().sort({SN:1}).toArray((err,result)=>{
             console.log(result);
             res.send({
                 page: page, // 页数
@@ -232,6 +232,213 @@ app.get('/listsBtn',(req,res)=>{
 
     })
 })
+
+// 编辑查询商品数据
+app.get('/checkedit',(req,res)=>{
+    // 获取前端数据
+    let {goodsSN}  = req.query;
+    let SN = Number(goodsSN);
+    // 连接数据库
+    MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
+        //连接成功后执行回调函数
+        //如果有错误就抛出错误
+        if(err) throw err;
+
+        //使用某个数据库，没有就自动创建一个
+        let db = database.db('supermarket');
+
+        //使用数据库里面的集合（表）
+        let lists = db.collection('lists');
+
+        //查询数据
+        lists.findOne({SN:SN},(err,result)=>{
+            console.log(result);
+            res.send({
+                code:1,
+                SN: SN, // 序号
+                data:result // 数据
+            });
+        })
+
+    })
+})
+
+// 修改商品数据表
+app.get('/upadatelists',(req,res)=>{
+    // 获取前端数据
+    let {goodsSN,imgurl,Gname,Gcategory,Gunit,Gstock} = req.query;
+    let SN = Number(goodsSN);
+    let unit = Number(Gunit);
+    let stock = Number(Gstock);
+
+    // 连接数据库
+    MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
+        //连接成功后执行回调函数
+        //如果有错误就抛出错误
+        if(err) throw err;
+
+        //使用某个数据库，没有就自动创建一个
+        let db = database.db('supermarket');
+
+        //使用数据库里面的集合（表）
+        let lists = db.collection('lists');
+
+        // 更新数据
+        lists.update({SN:SN},{$set:{goodsimgUrl:imgurl,goodsname:Gname,goodscategory:Gcategory,"goodsunit":unit,"goodstock":stock}},(err,result)=>{
+            // console.log(result);
+            if(result){
+                res.send({
+                    code:1,
+                    data:[],
+                    msg:'更新成功'
+                })
+            }else{
+                res.send({
+                    code:0,
+                    data:err,
+                    msg:'更新失败'
+                })
+            }
+            
+        })
+    })
+})
+
+// 删除商品并更新商品序号
+app.get('/dellists',(req,res)=>{
+    // 获取前端数据
+    let {goodsSN} = req.query;
+    let SN = Number(goodsSN);
+    // 连接数据库
+    MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
+        //连接成功后执行回调函数
+        //如果有错误就抛出错误
+        if(err) throw err;
+
+        //使用某个数据库，没有就自动创建一个
+        let db = database.db('supermarket');
+
+        //使用数据库里面的集合（表）
+        let lists = db.collection('lists');
+
+        // 删除数据
+        lists.removeOne({SN:SN},(err,result)=>{
+            if(result){
+                // res.send({
+                //     code:1,
+                //     data:[],
+                //     msg:'删除成功'
+                // })
+                lists.update({SN:{$gt:SN}},{$inc:{SN:-1}},{multi:true},(err,result)=>{
+                    if(err){
+                        res.send({
+                            code:0,
+                            data:err,
+                            msg:'修改失败'
+                        })
+                    }else{
+                        res.send({
+                            code:1,
+                            data:result,
+                            msg:'修改成功'
+                        })
+                    }
+                });
+            }else{
+                res.send({
+                    code:0,
+                    data:err,
+                    msg:'删除失败'
+                })
+            }
+        });
+
+    })
+})
+
+// 上下架
+app.get('/udlists',(req,res)=>{
+    // 获取前端数据
+    let {SN,imgurl,name,category,unit,stock}  = req.query;
+    let LSN = Number(SN);
+    let Lunit = Number(unit);
+    let Lstock = Number(stock);
+    // 连接数据库
+    MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
+        //连接成功后执行回调函数
+        //如果有错误就抛出错误
+        if(err) throw err;
+
+        //使用某个数据库，没有就自动创建一个
+        let db = database.db('supermarket');
+
+        //使用数据库里面的集合（表）
+        let grounding = db.collection('grounding');
+
+        //插入上下架的数据表中
+        grounding.findOne({SN:LSN},(err,result)=>{
+            // console.log(result);
+            // 如果数据表中不存在这条数据，则插入
+            if(result){
+                // console.log(1)
+                grounding.remove({SN:LSN},(err,result)=>{
+                    res.send({
+                        code:0,
+                        data:result,
+                        msg:'下架成功'
+                    })
+                })
+            }else{
+                // console.log(0)
+                grounding.insertOne({SN:LSN,imgUrl:imgurl,name:name,category:category,unit:Lunit,stock:Lstock},(err,result)=>{
+                    res.send({
+                        code:1, 
+                        data:[],
+                        msg:'上架成功'
+                    })
+                })
+            }
+        })
+
+    })
+})
+
+// 更新商品序列
+// app.get('/updateSN',(req,res)=>{
+//     // 获取前端数据
+//     let {goodsSN} = req.query;
+//     let SN = Number(goodsSN);
+//     // 连接数据库
+//     MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
+//         //连接成功后执行回调函数
+//         //如果有错误就抛出错误
+//         if(err) throw err;
+
+//         //使用某个数据库，没有就自动创建一个
+//         let db = database.db('supermarket');
+
+//         //使用数据库里面的集合（表）
+//         let lists = db.collection('lists');
+
+//         // 修改序列号
+//         lists.update({SN:{$gt:SN}},{$inc:{SN:-1}},{multi:true},(err,result)=>{
+//             if(err){
+//                 res.send({
+//                     code:0,
+//                     data:err,
+//                     msg:'修改失败'
+//                 })
+//             }else{
+//                 res.send({
+//                     code:1,
+//                     data:result,
+//                     msg:'修改成功'
+//                 })
+//             }
+//         });
+
+//     })
+// })
 
 
 //监听端口
