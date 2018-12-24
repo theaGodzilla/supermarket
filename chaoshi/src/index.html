@@ -255,12 +255,23 @@
         let dropdowntoggle = document.querySelector('.dropdown-toggle');
         let dropdownlore = document.querySelector('.dropdown-lore');
         let username = document.querySelector('.username');
+        let Quit = document.querySelector('.Quit');//退出
         if(document.cookie){
             var name = document.cookie.split('=')[1];
             console.log(name);
             dropdownlore.style.display='none';
             dropdowntoggle.style.display='block';
             // username.innerHTML=name;
+        }
+
+        //点击退出按钮
+        Quit.onclick=function(){
+            var quitok = confirm('确定退出吗？');
+            if(quitok){
+                Cookie.remove('usname');
+                dropdownlore.style.display='block';
+                dropdowntoggle.style.display='none';
+            }
         }
 
         //点击表单
@@ -277,23 +288,23 @@
 
         //头像选择框出现
         $('.dropdown-toggle').mouseenter(function(){
+            $(".dropdowncon").stop();
             $('.dropdowncon').slideDown();
         })
         $('.dropdown-toggle').mouseleave(function(){
+            $(".dropdowncon").stop();
             $('.dropdowncon').slideUp();
         })
 
         //修改资料
         var maincon=document.querySelector('.main-content');
-        // console.log(maincon);
         let Edit = document.querySelector('.Edit');
-        let Quit = document.querySelector('.Quit');
-        let close = document.querySelector('.close');
-        console.log(close);
+        let close = document.querySelector('.close');//关闭
         let dialog = document.querySelector('.dialog');
         // let viewcontainer = document.querySelector('.view-container');
         // let mod = maincon.querySelector('.mod');
         // console.log(mod);
+        //点击修改资料出现
         let dialognone = false;
         Edit.onclick=function(){
             userinfo();
