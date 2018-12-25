@@ -49,7 +49,7 @@
                             <b class="caret"></b>
                             <div class="dropdowncon">
                                 <ul class="dropdownlist">
-                                    <li class="Edit">个人资料</li>
+                                    <li class="Eduit">个人资料</li>
                                     <li class="Quit">退出</li>
                                 </ul>
                             </div>
@@ -145,11 +145,14 @@
                                 <th>
                                     <input type="checkbox">全选
                                 </th>
-                                <th>商品图片</th>
-                                <th>商品名称</th>
-                                <th>单价</th>
-                                <th>库存</th>
-                                <th>删除</th>
+                                <th class="goods_id">序号</th>
+                                <th class="goods_img">商品图片</th>
+                                <th class="goods_name">商品名称</th>
+                                <th class="goods_category">系列</th>
+                                <th class="goods_unit">单价</th>
+                                <th class="goods_stock">库存</th>
+                                <th class="goods_del">操作</th>
+                                <th class="goods_up">状态</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -192,6 +195,63 @@
             </div>  -->
            
         </section>
+        <figure>
+            <div class="edit">
+                <table>
+                   <tbody class="tbody_edit">
+                        <!-- <tr>
+                            <td>
+                                封面：
+                            </td>
+                            <td>
+                                <div class="listsimg" style="width:80px;height:100px;border: 1px solid #ccc">
+                                    <img src="./img/latiao.jpg" alt="" style="width:80px;height:100px;">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="file" name="" id="" class="file">
+                                <button class="uploadfile">上传</button>
+                            </td>
+                        </tr>
+                        <tr>
+                           <td>商品名称：</td>
+                           <td>
+                                <input type="text" name="" id="" class="edit_inp">
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>系列：</td>
+                           <td>
+                                <input type="text" name="" id="" class="edit_inp">
+                           </td>
+                        </tr>
+                        <tr>
+                            <td>单价：</td>
+                            <td>
+                                <input type="text" name="" id="" class="edit_inp">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>库存：</td>
+                            <td>
+                                <input type="text" name="" id="" class="edit_inp">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button>确定</button>
+                            </td>
+                        </tr> -->
+                   </tbody> 
+                </table>
+                <i class="edit_del">×</i>
+            </div>
+        </figure>
+        <footer>
+            <div class="screen"></div>  
+        </footer>
         <!-- 修改资料 -->
         <div class="dialog">
             <div class="dialog-con">
@@ -257,7 +317,8 @@
         let username = document.querySelector('.username');
         let Quit = document.querySelector('.Quit');//退出
         if(document.cookie){
-            var name = document.cookie.split('=')[1];
+            console.log(Cookie.get('usname'));
+            var name = Cookie.get('usname');
             console.log(name);
             dropdownlore.style.display='none';
             dropdowntoggle.style.display='block';
@@ -298,7 +359,7 @@
 
         //修改资料
         var maincon=document.querySelector('.main-content');
-        let Edit = document.querySelector('.Edit');
+        let Eduit = document.querySelector('.Eduit');
         let close = document.querySelector('.close');//关闭
         let dialog = document.querySelector('.dialog');
         // let viewcontainer = document.querySelector('.view-container');
@@ -306,7 +367,7 @@
         // console.log(mod);
         //点击修改资料出现
         let dialognone = false;
-        Edit.onclick=function(){
+        Eduit.onclick=function(){
             userinfo();
             $(document).on('click','.mod',()=>{
                 // console.log('修改');
@@ -409,16 +470,7 @@
             $('.diawordlist').val(res.wordlist);
             $('.diamore').val(res.more);
         }
-
-        
-        
-
-
-
-       
-
-			
-    
     </script>
 </body>
+<script src="./js/index.js"></script>
 </html>
