@@ -390,16 +390,6 @@ function insertAfter(newElement,targetElement){
 	}
 }
 
-//排序(name:要排序的对象名)
-// function sorted(name){
-// 	var arr=[];
-// 	for( var i=0;i<name.length;i++ ){
-// 		arr.push(name[i]);
-// 	}
-// 	arr.sort(function(a,b){
-// 		return a-b;
-// 	});
-// }
 
 
 //抛物线运动封装

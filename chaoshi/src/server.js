@@ -180,6 +180,36 @@ app.get('/lists',(req,res)=>{
     let {pages,qtys} = req.query;
     let qty = Number(qtys);
     let page =  (Number(pages)-1)*qty;
+    MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
+        //连接成功后执行回调函数
+        //如果有错误就抛出错误
+        if(err) throw err;
+
+        //使用某个数据库，没有就自动创建一个
+        let db = database.db('supermarket');
+
+        //使用数据库里面的集合（表）
+        let user = db.collection('user');
+        //查询数据
+        lists.find().limit(qty).skip(page).sort({SN:1}).toArray((err,result)=>{
+            console.log(result);
+
+            res.send({
+                code:0,
+                data:[result],
+                msg:'已找到',
+            })
+        })
+        //关闭数据库,避免资源浪费
+        database.close();
+    })
+})
+
+
+//修改资料
+app.get('/euit',(req,res)=>{
+    //获取传来的用户名
+    let {username} = req.query;
     //连接数据库
     MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
         //连接成功后执行回调函数
@@ -190,18 +220,19 @@ app.get('/lists',(req,res)=>{
         let db = database.db('supermarket');
 
         //使用数据库里面的集合（表）
-        let lists = db.collection('lists');
-
-        //查询数据
-        lists.find().limit(qty).skip(page).sort({SN:1}).toArray((err,result)=>{
-            console.log(result);
+        let user = db.collection('user');
+        //查询是否存在数据
+        user.findOne({name:username},(err,result)=>{
+            if(err) throw err;
+            // console.log(result);//若存在，则出现信息，如不存在则出现null
             res.send({
-                data:result, // 数据
-                page:page, // （页数-1）*条数，开始的值
-                qty:qty // 每一页几条
-            });
+                code:0,
+                data:[result],
+                msg:'已找到',
+            })
         })
-
+        //关闭数据库,避免资源浪费
+        database.close();
     })
 })
 
@@ -219,17 +250,50 @@ app.get('/listsBtn',(req,res)=>{
         let db = database.db('supermarket');
 
         //使用数据库里面的集合（表）
-        let lists = db.collection('lists');
-
+        let user = db.collection('user');
         //查询数据
         lists.find().sort({SN:1}).toArray((err,result)=>{
             console.log(result);
-            res.send({
-                page: page, // 页数
-                data:result // 数据
-            });
+        res.send({
+            code:0,
+            data:[result],
+            msg:'已修改',
         })
+    })
+    database.close();
+})
+})
 
+
+
+
+//用户修改自己的资料
+app.get('/revise',(req,res)=>{
+    let {name,thename,chname,word,gender,birthday,wordlist,more} = req.query;
+    //连接数据库
+    MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
+        //连接成功后执行回调函数
+        //如果有错误就抛出错误
+        if(err) throw err;
+
+        //使用某个数据库，没有就自动创建一个
+        let db = database.db('supermarket');
+
+        //使用数据库里面的集合（表）
+        let user = db.collection('user');
+
+        
+        //查询是否存在数据
+        user.update({name},{$set:{thename,chname,word,gender,birthday,wordlist,more}},(err,result)=>{
+            if(err) throw err;
+            // console.log(result);
+            res.send({
+                code:0,
+                data:[result],
+                msg:'已修改',
+            })
+        })
+        database.close();
     })
 })
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +8,14 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="iconfont/iconfont.css">
-    <link rel="stylesheet" href="./icon/icon01/iconfont.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="css/wui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.0/angular.min.js"></script>
+    <script type="text/javascript" src="js/wui-date.js" charset="utf-8"></script>
+    <script src="js/common.js"></script>
 
+</head>
 <body>
     <div id="container">
         <header class="header white-bg">
@@ -20,17 +24,17 @@
             <div class="nav">
                 <ul class="top-menu">
                     <li><a href="">
-                            <i class="iconfont icon-tasks"></i>
-                            <span class="badge bg-success">0</span>
-                        </a></li>
+                        <i class="iconfont icon-tasks"></i>
+                        <span class="badge bg-success">0</span>
+                    </a></li>
                     <li><a href="">
-                            <i class="iconfont icon-envelope"></i>
-                            <span class="badge bg-important">0</span>
-                        </a></li>
+                        <i class="iconfont icon-envelope"></i>
+                        <span class="badge bg-important">0</span>
+                    </a></li>
                     <li><a href="">
-                            <i class="iconfont icon-bell"></i>
-                            <span class="badge bg-warning">0</span>
-                        </a></li>
+                        <i class="iconfont icon-bell"></i>
+                        <span class="badge bg-warning">0</span>
+                    </a></li>
                 </ul>
             </div>
             <div class="top-nav">
@@ -41,14 +45,21 @@
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle">
                             <img src="img/thepink.jpg" alt="">
-                            <span class="username">ozvictor</span>
+                            <span class="username"></span>
                             <b class="caret"></b>
+                            <div class="dropdowncon">
+                                <ul class="dropdownlist">
+                                    <li class="Eduit">个人资料</li>
+                                    <li class="Quit">退出</li>
+                                </ul>
+                            </div>
+                            
                         </a>
                         <div class="dropdown-lore">
                             <a href="html/login.html">登录</a>
                             <a href="html/reg.html">注册</a>
                         </div>
-
+                        
                     </li>
                 </ul>
             </div>
@@ -120,7 +131,7 @@
             </div>
         </aside>
         <section class="main-content">
-            <div class="wrapper">
+            <!-- <div class="wrapper">
                 <div class="contentbiao">
                     <span>商品管理</span>
                     <ul>
@@ -144,44 +155,45 @@
                                 <th class="goods_up">状态</th>
                             </tr>
                         </thead>
-                        <tbody id="tbody">
-                            <!-- <tr>
-                                <td>
-                                    <input type="checkbox">
-                                </td>
-                                <td class="goods_id">01</td>
-                                <td class="goods_img">
-                                    <img src="./img/latiao.jpg" alt="" style="width: 70px;height: 90px;border: 1px solid #ccc;">
-                                    <img src="./img/latiao.jpg" class="smallimg" alt="" style="width: 150px;height: 180px;border: 1px solid #ccc;">
-                                </td>
-                                <td class="goods_name">【三只松鼠_辣条大礼包组合】怀旧麻辣零食网红儿时小吃大辣片</td>
-                                <td class="goods_category">辣条组合</td>
-                                <td class="goods_unit">￥24.9</td>
-                                <td class="goods_stock">20</td>
-                                <td class="goods_del">
-                                    <i class="iconfont icon-caozuo" title="编辑"></i>
-                                    <i class="iconfont icon-hekriconshanchu" title="删除"></i>
-                                </td>
-                                <td class="goods_up">
-                                    <span class="uplists">未上架</span>
-                                    <span class="downlists">下架</span>
-                                </td>
-                            </tr> -->
-
+                        <tbody>
+                            <tr>
+                                <th></th>
+                            </tr>
                         </tbody>
                     </table>
+                </div>
+            </div> -->
 
-                </div>
-                <div class="lists_page">
-                    <span class="page_left" id="btn_prev"><</span> 
-                    <div class="pages" id="pages">
-                        <!-- <span class="lists_qty"><a href="#">1</a> </span>
-                        <span><a href="#">2</a></span>
-                        <span><a href="#">3</a></span> -->
+            <!-- 用户设置 -->
+            <!-- <div class="view-container">
+                <div class="">
+                    <div class="cont">
+                        <h3 class="cont-title">个人资料</h3>
+                        <div class="user-info">
+                            <div class="userheader">
+                                <img src="img/thepink.jpg" alt="">
+                                <p class="modify">修改头像</p>
+                            </div>
+                            <div class="right_c">
+                                <div class="nick">
+                                    <span class="nickusname">昵称：九华灼兮冠世倾</span>
+                                    <span class="mod">修改资料</span>
+                                </div>
+                                <ul class="self">
+                                    <li>昵称：哥斯拉</li>
+                                    <li>实名：哥斯拉</li>
+                                    <li>性别：女</li>
+                                    <li>生日：1996.07.18</li>
+                                    <li>行业：</li>
+                                    <li>职业：</li>
+                                    <li>简介：</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <span class="page_right" id="btn_next">></span>
                 </div>
-            </div>
+            </div> -->
+           
         </section>
         <figure>
             <div class="edit">
@@ -240,25 +252,225 @@
         <footer>
             <div class="screen"></div>  
         </footer>
+        <!-- 修改资料 -->
+        <div class="dialog">
+            <div class="dialog-con">
+                <div class="box">
+                    <h3>修改资料</h3>
+                    <span class="close">×</span>
+                </div>
+                <ul class="dialog-ul">
+                    <li><label>昵称</label>：<input type="text" class="dianame"></li>
+                    <li><label>实名</label>：<input type="text" class="diachname"></li>
+                    <li><label>职位</label>：<input type="text" class="diaword"></li>
+                    <li><label>性别</label>：
+                        <select class="diasex">
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>生日</label>：<div class="wui-area" style="margin-bottom: 0;position: absolute;">
+                            <wui-date 
+                                format="yyyy-mm-dd" 
+                                placeholder="请选择或输入日期" 
+                                id="date1" 
+                                btns="{'ok':'确定','now':'此刻'}" 
+                                ng-model="date1"
+                            >
+                            </wui-date>
+                        </div>
+                    </li>
+                    <li><label>行业</label>：<input type="text"  class="diawordlist"></li>
+                    <li><label>简介</label>：<textarea  class="diamore"></textarea></li>
+                </ul>
+                <div class="btn_group">
+                    <input type="button" value="确定"  class="sumit">
+                    <input type="button" value="取消">
+                </div>
+            </div>  
+        </div>
+        <script type="text/javascript">
+            var app = angular.module('app',["wui.date"]);
+        </script>
+        
     </div>
     <script>
-        let assidebtn = document.querySelector('.sidebar-toggle-box');
-        let aside = document.querySelector('.aside');
+        //侧边栏
+        let assidebtn=document.querySelector('.sidebar-toggle-box');
+        let aside=document.querySelector('.aside');
         let section = document.querySelector('.main-content');
         let thebtn = false;
-        assidebtn.onclick = function () {
-            if (thebtn) {
-                aside.style.display = 'block';
-                section.style.marginLeft = 180 + 'px';
-            } else {
-                aside.style.display = 'none';
-                section.style.marginLeft = 0;
+        assidebtn.onclick = function(){
+            if( thebtn ){
+                aside.style.display='block';
+                section.style.marginLeft=180+'px';
+            }else{
+                aside.style.display='none';
+                section.style.marginLeft=0;
             }
-            thebtn = !thebtn;
+            thebtn=!thebtn;
+        }
+        //用户名
+        let dropdowntoggle = document.querySelector('.dropdown-toggle');
+        let dropdownlore = document.querySelector('.dropdown-lore');
+        let username = document.querySelector('.username');
+        let Quit = document.querySelector('.Quit');//退出
+        if(document.cookie){
+            console.log(Cookie.get('usname'));
+            var name = Cookie.get('usname');
+            console.log(name);
+            dropdownlore.style.display='none';
+            dropdowntoggle.style.display='block';
+            // username.innerHTML=name;
+        }
+
+        //点击退出按钮
+        Quit.onclick=function(){
+            var quitok = confirm('确定退出吗？');
+            if(quitok){
+                Cookie.remove('usname');
+                dropdownlore.style.display='block';
+                dropdowntoggle.style.display='none';
+            }
+        }
+
+        //点击表单
+        let dialogcon = document.querySelector('.dialog-con');
+        let inputs = dialogcon.querySelectorAll('input');
+        for( let i = 0;i<inputs.length;i++ ){
+            $(inputs[i]).focus(function(){
+                $(inputs[i]).css("box-shadow","0px 0px 3px #3399ea");
+            });
+            $(inputs[i]).blur(function(){
+                $(inputs[i]).css("box-shadow","none");
+            });
+        }
+
+        //头像选择框出现
+        $('.dropdown-toggle').mouseenter(function(){
+            $(".dropdowncon").stop();
+            $('.dropdowncon').slideDown();
+        })
+        $('.dropdown-toggle').mouseleave(function(){
+            $(".dropdowncon").stop();
+            $('.dropdowncon').slideUp();
+        })
+
+        //修改资料
+        var maincon=document.querySelector('.main-content');
+        let Eduit = document.querySelector('.Eduit');
+        let close = document.querySelector('.close');//关闭
+        let dialog = document.querySelector('.dialog');
+        // let viewcontainer = document.querySelector('.view-container');
+        // let mod = maincon.querySelector('.mod');
+        // console.log(mod);
+        //点击修改资料出现
+        let dialognone = false;
+        Eduit.onclick=function(){
+            userinfo();
+            $(document).on('click','.mod',()=>{
+                // console.log('修改');
+                dialog.style.display='block';
+                dialognone = true;
+            })
+            close.onclick=()=>{
+                dialognone=!dialognone;
+                if(dialognone){
+                    dialog.style.display='block';
+                }else{
+                    dialog.style.display='none';
+                }
+            }
+        }
+        
+        
+        
+        //渲染
+        // let nickusname = document.querySelector('.nickusname');
+        // let self = document.querySelector('.self');
+        // var name = document.cookie.split('=')[1];
+        // nickusname.innerHTML='账号：'+name;
+        // var viewcon=document.querySelector('.view-container');
+        // console.log(viewcon);
+        
+        
+        //封装
+        function userinfo(){
+            var xhr =new XMLHttpRequest();
+            xhr.onload=function(){
+                if(xhr.status == 200){
+                    var res = JSON.parse(xhr.responseText).data[0];
+                    console.log(res);
+                    // console.log(res.thename);
+                    var html ='';
+                    html=`
+                    <div class="view-container">
+                        <div class="">
+                            <div class="cont">
+                                <h3 class="cont-title">个人资料</h3>
+                                <div class="user-info">
+                                    <div class="userheader">
+                                        <img src="img/thepink.jpg" alt="">
+                                        <p class="modify">修改头像</p>
+                                    </div>
+                                    <div class="right_c">
+                                        <div class="nick">
+                                            <span class="nickusname">昵称：${name}</span>
+                                            <span class="mod">修改资料</span>
+                                        </div>
+                                        <ul class="self">
+                                            <li>昵称：${res.thename}</li>
+                                            <li>实名：${res.chname}</li>
+                                            <li>性别：${res.gender}</li>
+                                            <li>生日：${res.birthday}</li>
+                                            <li>行业：${res.wordlist}</li>
+                                            <li>职业：${res.word}</li>
+                                            <li>简介：${res.more}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    maincon.innerHTML=html;
+                    userlist(res);
+                    $(document).on('click','.sumit',function(){
+                        var diathename=$('.dianame').val();
+                        var diachname=$('.diachname').val();
+                        var diaword=$('.diaword').val();
+                        var diasex=$('.diasex').val();
+                        var birthday=$('.wui-input').val();
+                        var diawordlist=$('.diawordlist').val();
+                        var diamore=$('.diamore').val();
+                        var url = '/revise';
+                        var data = `name=${name}&thename=${diathename}&chname=${diachname}&word=${diaword}&gender=${diasex}&birthday=${birthday}&wordlist=${diawordlist}&more=${diamore}`;
+                        ajax('GET',url,data,function(str){
+                            console.log(str);
+                            userinfo();
+                        });
+                        dialog.style.display='none';
+                        dialognone = false;
+                    })
+                    // maincon.innerHTML=maincon;
+                }
+            }
+            xhr.open('GET','/euit?username='+name,true);
+            xhr.send();
+        }
+        // 修改资料表单的列表
+        function userlist(res){
+            var x = res.gender;
+            $('.dianame').val(res.thename);
+            $('.diachname').val(res.chname);
+            $('.diaword').val(res.word);
+            $('.diasex').val(x);
+            $('.wui-input').val(res.birthday);
+            $('.diawordlist').val(res.wordlist);
+            $('.diamore').val(res.more);
         }
     </script>
 </body>
-<script src="./js/common.js"></script>
 <script src="./js/index.js"></script>
-
 </html>
