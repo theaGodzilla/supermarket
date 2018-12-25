@@ -1,12 +1,86 @@
-let tbody = document.getElementById('tbody'); // 列表表格
-let pages = document.getElementById('pages'); // 按钮
+/**
+ * 商品列表
+ */
+let sublists = document.querySelector('.sublists'); // 商品列表按钮
+let wrapper = document.querySelector('.wrapper'); // 商品列表主要内容
+sublists.onclick = ()=>{
+    wrapper.innerHTML += `
+        <div class="contentbiao">
+            <span>商品管理</span>
+            <ul>
+                <li>商品列表</li>
+            </ul>
+            </div>
+            <div class="content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox">全选
+                        </th>
+                        <th class="goods_id">序号</th>
+                        <th class="goods_img">商品图片</th>
+                        <th class="goods_name">商品名称</th>
+                        <th class="goods_category">系列</th>
+                        <th class="goods_unit">单价</th>
+                        <th class="goods_stock">库存</th>
+                        <th class="goods_del">操作</th>
+                        <th class="goods_up">状态</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <!-- <tr>
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                        <td class="goods_id">01</td>
+                        <td class="goods_img">
+                            <img src="./img/latiao.jpg" alt="" style="width: 70px;height: 90px;border: 1px solid #ccc;">
+                            <img src="./img/latiao.jpg" class="smallimg" alt="" style="width: 150px;height: 180px;border: 1px solid #ccc;">
+                        </td>
+                        <td class="goods_name">【三只松鼠_辣条大礼包组合】怀旧麻辣零食网红儿时小吃大辣片</td>
+                        <td class="goods_category">辣条组合</td>
+                        <td class="goods_unit">￥24.9</td>
+                        <td class="goods_stock">20</td>
+                        <td class="goods_del">
+                            <i class="iconfont icon-caozuo" title="编辑"></i>
+                            <i class="iconfont icon-hekriconshanchu" title="删除"></i>
+                        </td>
+                        <td class="goods_up">
+                            <span class="uplists">未上架</span>
+                            <span class="downlists">下架</span>
+                        </td>
+                    </tr> -->
+
+                </tbody>
+            </table>
+
+            </div>
+            <div class="lists_page">
+            <span class="page_left" id="btn_prev"><</span> 
+            <div class="pages" id="pages">
+                <!-- <span class="lists_qty"><a href="#">1</a> </span>
+                <span><a href="#">2</a></span>
+                <span><a href="#">3</a></span> -->
+            </div>
+            <span class="page_right" id="btn_next">></span>
+            </div>
+    `
+
+
+
+
+
+let tbody = wrapper.children[1].children[0].children[1]; // 列表表格
+let pages = wrapper.children[2].children[1]; // 按钮
 let spans = pages.children; // 按钮总数
-let btn_prev = document.getElementById('btn_prev'); // 上一页
-let btn_next = document.getElementById('btn_next'); // 下一页
+let btn_prev = wrapper.children[2].children[0]; // 上一页
+let btn_next = wrapper.children[2].children[2]; // 下一页
 let edit = document.querySelector('.edit'); //编辑框
 let screen = document.querySelector('.screen'); // 编辑框遮罩
 let edit_del = document.querySelector('.edit_del'); // 取消编辑框
 let tbody_edit = document.querySelector('.tbody_edit'); // 编辑框的内容
+// console.log(wrapper.children[2].children[1]);
 
 // 渲染
 var html = '';
@@ -440,4 +514,6 @@ function Edit() {
 edit_del.onclick = function () {
     edit.style.display = 'none';
     screen.style.display = 'none';
+}
+
 }
