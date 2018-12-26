@@ -180,6 +180,7 @@ app.get('/lists',(req,res)=>{
     let {pages,qtys} = req.query;
     let qty = Number(qtys);
     let page =  (Number(pages)-1)*qty;
+    //连接数据库
     MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
         //连接成功后执行回调函数
         //如果有错误就抛出错误
@@ -189,19 +190,47 @@ app.get('/lists',(req,res)=>{
         let db = database.db('supermarket');
 
         //使用数据库里面的集合（表）
-        let user = db.collection('user');
+        let lists = db.collection('lists');
+
         //查询数据
         lists.find().limit(qty).skip(page).sort({SN:1}).toArray((err,result)=>{
             console.log(result);
-
             res.send({
-                code:0,
-                data:[result],
-                msg:'已找到',
-            })
+                data:result, // 数据
+                page:page, // （页数-1）*条数，开始的值
+                qty:qty // 每一页几条
+            });
         })
-        //关闭数据库,避免资源浪费
-        database.close();
+
+    })
+})
+
+
+// 列表按钮
+app.get('/listsBtn',(req,res)=>{
+    // 获取前端数据
+    let {page} = req.query;
+    //连接数据库
+    MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
+        //连接成功后执行回调函数
+        //如果有错误就抛出错误
+        if(err) throw err;
+
+        //使用某个数据库，没有就自动创建一个
+        let db = database.db('supermarket');
+
+        //使用数据库里面的集合（表）
+        let lists = db.collection('lists');
+
+        //查询数据
+        lists.find().sort({SN:1}).toArray((err,result)=>{
+            console.log(result);
+            res.send({
+                page: page, // 页数
+                data:result // 数据
+            });
+        })
+
     })
 })
 
@@ -235,36 +264,6 @@ app.get('/euit',(req,res)=>{
         database.close();
     })
 })
-
-// 列表按钮
-app.get('/listsBtn',(req,res)=>{
-    // 获取前端数据
-    let {page} = req.query;
-    //连接数据库
-    MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
-        //连接成功后执行回调函数
-        //如果有错误就抛出错误
-        if(err) throw err;
-
-        //使用某个数据库，没有就自动创建一个
-        let db = database.db('supermarket');
-
-        //使用数据库里面的集合（表）
-        let user = db.collection('user');
-        //查询数据
-        lists.find().sort({SN:1}).toArray((err,result)=>{
-            console.log(result);
-        res.send({
-            code:0,
-            data:[result],
-            msg:'已修改',
-        })
-    })
-    database.close();
-})
-})
-
-
 
 
 //用户修改自己的资料
@@ -462,6 +461,46 @@ app.get('/udlists',(req,res)=>{
                     })
                 })
             }
+        })
+
+    })
+})
+
+// 上下架查询渲染
+app.get('/checkgrounding',(req,res)=>{
+    // 获取前端数据
+    let {SN}  = req.query;
+    let LSN = Number(SN);
+    // 连接数据库
+    MongoClient.connect('mongodb://localhost:27017',(err,database)=>{
+        //连接成功后执行回调函数
+        //如果有错误就抛出错误
+        if(err) throw err;
+
+        //使用某个数据库，没有就自动创建一个
+        let db = database.db('supermarket');
+
+        //使用数据库里面的集合（表）
+        let grounding = db.collection('grounding');
+
+        // 查询上下架的数据表中
+        grounding.find().toArray((err,result)=>{
+            // console.log(result);
+            // 如果数据表中不存在这条数据
+            if(result){
+                res.send({
+                    code:1,
+                    data:result,
+                    msg:'存在'
+                })
+            }else{
+                res.send({
+                    code:0,
+                    data:result,
+                    msg:'不存在'
+                })
+            }
+            
         })
 
     })

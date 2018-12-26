@@ -272,9 +272,8 @@
             font-size: 14px;
             color: #4d4d4d; }
     #container .main-content .wrapper {
-      display: inline-block;
       margin-top: 60px;
-      padding: 15px;
+      padding: 15px 10px 0px 15px;
       width: 100%;
       /*按钮*/ }
       #container .main-content .wrapper .contentbiao {
@@ -329,223 +328,130 @@
           border: 1px solid #f52648;
           background: #FF6C60;
           color: #fff; }
-        #container .main-content .wrapper .lists_page .pages .lists_qty .content {
+      #container .main-content .wrapper .content {
+        width: 100%; }
+        #container .main-content .wrapper .content table {
+          text-align: left;
           width: 100%; }
-          #container .main-content .wrapper .lists_page .pages .lists_qty .content table {
-            text-align: left;
-            width: 100%; }
-            #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr {
-              height: 25px;
-              line-height: 25px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr th {
-                width: 100px; }
-        #container .main-content .wrapper .lists_page .pages .lists_qty .content {
-          width: 100%; }
-          #container .main-content .wrapper .lists_page .pages .lists_qty .content table {
-            text-align: left;
-            width: 100%; }
-            #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr {
-              height: 35px;
-              line-height: 35px;
-              background: #f0f0f8; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr th {
-                text-align: center; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr th:nth-child(1) {
-                width: 30px;
-                font-weight: 100;
-                font-size: 12px; }
-                #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr th:nth-child(1) input {
-                  display: inline-block;
-                  width: 15px;
-                  height: 15px;
-                  background: #fff;
-                  margin-right: 4px;
-                  vertical-align: middle;
-                  cursor: pointer; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr .goods_img {
-                width: 70px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr .goods_id {
-                width: 20px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr .goods_category {
-                width: 50px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr .goods_name {
-                width: 120px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr .goods_unit {
-                width: 50px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr .goods_stock {
-                width: 50px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr .goods_del {
-                width: 55px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table thead tr .goods_up {
-                width: 80px; }
-            #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr {
-              height: 100px;
-              border: 1px dotted #c2c2c2;
-              border-top: none;
+          #container .main-content .wrapper .content table thead tr {
+            height: 35px;
+            line-height: 35px;
+            background: #f0f0f8; }
+            #container .main-content .wrapper .content table thead tr th {
+              text-align: center; }
+            #container .main-content .wrapper .content table thead tr th:nth-child(1) {
+              width: 30px;
               font-weight: 100;
-              font-size: 13px;
-              color: #666; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr td {
-                text-align: center; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr td:nth-child(1) {
-                width: 30px;
-                font-weight: 100;
-                font-size: 12px; }
-                #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr td:nth-child(1) input {
-                  display: inline-block;
-                  width: 15px;
-                  height: 15px;
-                  margin-left: -20px;
-                  vertical-align: middle;
-                  cursor: pointer; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_img {
-                width: 70px;
-                position: relative;
+              font-size: 12px; }
+              #container .main-content .wrapper .content table thead tr th:nth-child(1) input {
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                background: #fff;
+                margin-right: 4px;
+                vertical-align: middle;
                 cursor: pointer; }
-                #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_img .smallimg {
-                  position: absolute;
-                  margin-left: 5px;
-                  top: 10px;
-                  opacity: 0;
-                  z-index: 10;
-                  transition: opacity .5s; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_id {
-                width: 20px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_category {
-                width: 50px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_name {
-                width: 120px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_unit {
-                width: 50px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_stock {
-                width: 50px; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_del {
-                width: 55px; }
-                #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_del i {
-                  display: inline-block;
-                  width: 40px;
-                  height: 22px;
-                  line-height: 22px;
-                  cursor: pointer;
-                  background: #f0f0f8;
-                  border-radius: 3px;
-                  border: 1px solid #ccc;
-                  box-shadow: 0px 0px 3px #c2c2c2; }
-                  #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_del i:nth-child(1):hover {
-                    background: #FCB322;
-                    color: #fff;
-                    border: 1px solid #faeda6;
-                    box-shadow: 0px 0px 3px #f0f0f8; }
-                  #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_del i:nth-child(2):hover {
-                    background: #f52648;
-                    color: #fff;
-                    border: 1px solid #faeda6;
-                    box-shadow: 0px 0px 3px #f0f0f8; }
-              #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_up {
-                width: 80px; }
-                #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_up span {
-                  display: inline-block;
-                  width: 50px;
-                  height: 22px;
-                  line-height: 22px;
-                  border-radius: 3px;
-                  cursor: pointer; }
-                #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_up .uplists {
-                  background: #FF6C60;
-                  box-shadow: 0px 0px 3px #ff6c60;
-                  color: #fff;
-                  border: 1px solid #faeda6; }
-                #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr .goods_up .downlists {
-                  display: none;
-                  background: #FF6C60;
+            #container .main-content .wrapper .content table thead tr .goods_img {
+              width: 70px; }
+            #container .main-content .wrapper .content table thead tr .goods_id {
+              width: 20px; }
+            #container .main-content .wrapper .content table thead tr .goods_category {
+              width: 50px; }
+            #container .main-content .wrapper .content table thead tr .goods_name {
+              width: 120px; }
+            #container .main-content .wrapper .content table thead tr .goods_unit {
+              width: 50px; }
+            #container .main-content .wrapper .content table thead tr .goods_stock {
+              width: 50px; }
+            #container .main-content .wrapper .content table thead tr .goods_del {
+              width: 55px; }
+            #container .main-content .wrapper .content table thead tr .goods_up {
+              width: 80px; }
+          #container .main-content .wrapper .content table tbody tr {
+            height: 100px;
+            border: 1px dotted #c2c2c2;
+            border-top: none;
+            font-weight: 100;
+            font-size: 13px;
+            color: #666; }
+            #container .main-content .wrapper .content table tbody tr td {
+              text-align: center; }
+            #container .main-content .wrapper .content table tbody tr td:nth-child(1) {
+              width: 30px;
+              font-weight: 100;
+              font-size: 12px; }
+              #container .main-content .wrapper .content table tbody tr td:nth-child(1) input {
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                margin-left: -20px;
+                vertical-align: middle;
+                cursor: pointer; }
+            #container .main-content .wrapper .content table tbody tr .goods_img {
+              width: 70px;
+              position: relative;
+              cursor: pointer; }
+              #container .main-content .wrapper .content table tbody tr .goods_img .smallimg {
+                position: absolute;
+                margin-left: 5px;
+                top: 10px;
+                opacity: 0;
+                z-index: 10;
+                transition: opacity .5s; }
+            #container .main-content .wrapper .content table tbody tr .goods_id {
+              width: 20px; }
+            #container .main-content .wrapper .content table tbody tr .goods_category {
+              width: 50px; }
+            #container .main-content .wrapper .content table tbody tr .goods_name {
+              width: 120px; }
+            #container .main-content .wrapper .content table tbody tr .goods_unit {
+              width: 50px; }
+            #container .main-content .wrapper .content table tbody tr .goods_stock {
+              width: 50px; }
+            #container .main-content .wrapper .content table tbody tr .goods_del {
+              width: 55px; }
+              #container .main-content .wrapper .content table tbody tr .goods_del i {
+                display: inline-block;
+                width: 40px;
+                height: 22px;
+                line-height: 22px;
+                cursor: pointer;
+                background: #f0f0f8;
+                border-radius: 3px;
+                border: 1px solid #ccc;
+                box-shadow: 0px 0px 3px #c2c2c2; }
+                #container .main-content .wrapper .content table tbody tr .goods_del i:nth-child(1):hover {
+                  background: #FCB322;
                   color: #fff;
                   border: 1px solid #faeda6;
-                  box-shadow: 0px 0px 3px #ff6c60; }
-            #container .main-content .wrapper .lists_page .pages .lists_qty .content table tbody tr:nth-child(even) {
-              background: #fdf3f3; }
-        #container .main-content .wrapper .lists_page figure {
-          position: fixed;
-          z-index: 888888;
-          left: 50%;
-          top: 50%;
-          margin-top: -220px;
-          margin-left: -300px; }
-          #container .main-content .wrapper .lists_page figure .edit {
-            display: none;
-            width: 600px;
-            height: 500px;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            position: relative; }
-            #container .main-content .wrapper .lists_page figure .edit table {
-              width: 600px;
-              height: 500px;
-              margin: 30px; }
-              #container .main-content .wrapper .lists_page figure .edit table tr {
+                  box-shadow: 0px 0px 3px #f0f0f8; }
+                #container .main-content .wrapper .content table tbody tr .goods_del i:nth-child(2):hover {
+                  background: #f52648;
+                  color: #fff;
+                  border: 1px solid #faeda6;
+                  box-shadow: 0px 0px 3px #f0f0f8; }
+            #container .main-content .wrapper .content table tbody tr .goods_up {
+              width: 80px; }
+              #container .main-content .wrapper .content table tbody tr .goods_up span {
                 display: inline-block;
-                width: 100%;
-                height: 50px;
-                text-align: center;
-                line-height: 50px;
-                font-size: 15px;
-                color: #666;
-                margin-top: 5px; }
-                #container .main-content .wrapper .lists_page figure .edit table tr td:nth-child(1) {
-                  display: inline-block;
-                  width: 15%;
-                  height: 100%; }
-                #container .main-content .wrapper .lists_page figure .edit table tr td:nth-child(2) {
-                  display: inline-block;
-                  width: 60%;
-                  height: 100%; }
-                  #container .main-content .wrapper .lists_page figure .edit table tr td:nth-child(2) .edit_inp {
-                    display: inline-block;
-                    float: left;
-                    width: 300px;
-                    height: 30px;
-                    margin-top: 5px;
-                    border: 1px solid #dcdfe6;
-                    color: #555;
-                    border-radius: 5px;
-                    padding-left: 10px; }
-              #container .main-content .wrapper .lists_page figure .edit table tr:nth-child(1) {
-                height: 100px;
-                margin-bottom: 5px; }
-              #container .main-content .wrapper .lists_page figure .edit table tr:nth-child(2) td {
-                width: 100%; }
-                #container .main-content .wrapper .lists_page figure .edit table tr:nth-child(2) td .uploadfile {
-                  width: 50px;
-                  height: 22px;
-                  background: linear-gradient(to bottom, #f0f0f8 20%, #ccc 80%);
-                  border: 1px solid #666;
-                  border-radius: 3px; }
-                  #container .main-content .wrapper .lists_page figure .edit table tr:nth-child(2) td .uploadfile:hover {
-                    background: linear-gradient(to bottom, #d5deee 20%, #a0bdf3 80%);
-                    border: 1px solid #6495ED; }
-              #container .main-content .wrapper .lists_page figure .edit table tr:last-child button {
-                display: inline-block;
-                width: 80px;
-                height: 30px;
-                background: linear-gradient(to bottom right, #6495ED, #4169E1, #6495ED);
-                color: #fff;
+                width: 50px;
+                height: 22px;
+                line-height: 22px;
                 border-radius: 3px;
-                border: 1px solid #4169E1;
-                font-size: 15px;
-                initial-letter: 2px;
-                letter-spacing: 2px;
                 cursor: pointer; }
-              #container .main-content .wrapper .lists_page figure .edit table footer .screen {
+              #container .main-content .wrapper .content table tbody tr .goods_up .uplists {
+                background: #FF6C60;
+                box-shadow: 0px 0px 3px #ff6c60;
+                color: #fff;
+                border: 1px solid #faeda6; }
+              #container .main-content .wrapper .content table tbody tr .goods_up .downlists {
                 display: none;
-                background: #000;
-                width: 100%;
-                height: 100%;
-                opacity: .7;
-                z-index: 66666;
-                position: fixed;
-                bottom: 0;
-                top: 0;
-                left: 0; }
+                background: #FF6C60;
+                color: #fff;
+                border: 1px solid #faeda6;
+                box-shadow: 0px 0px 3px #ff6c60; }
+          #container .main-content .wrapper .content table tbody tr:nth-child(even) {
+            background: #fdf3f3; }
   #container .dialog {
     display: none;
     position: fixed;
@@ -647,5 +553,103 @@
         font-size: 18px;
         font-weight: bold;
         cursor: pointer; }
+  #container figure {
+    position: fixed;
+    z-index: 888888;
+    left: 50%;
+    top: 50%;
+    margin-top: -220px;
+    margin-left: -300px; }
+    #container figure .edit {
+      display: none;
+      width: 600px;
+      height: 500px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      position: relative; }
+      #container figure .edit table {
+        width: 600px;
+        height: 500px;
+        margin: 30px; }
+        #container figure .edit table tr {
+          display: inline-block;
+          width: 100%;
+          height: 50px;
+          text-align: center;
+          line-height: 50px;
+          font-size: 15px;
+          color: #666;
+          margin-top: 5px; }
+          #container figure .edit table tr td:nth-child(1) {
+            display: inline-block;
+            width: 15%;
+            height: 100%; }
+          #container figure .edit table tr td:nth-child(2) {
+            display: inline-block;
+            width: 60%;
+            height: 100%; }
+            #container figure .edit table tr td:nth-child(2) .edit_inp {
+              display: inline-block;
+              float: left;
+              width: 300px;
+              height: 30px;
+              margin-top: 5px;
+              border: 1px solid #dcdfe6;
+              color: #555;
+              border-radius: 5px;
+              padding-left: 10px; }
+        #container figure .edit table tr:nth-child(1) {
+          height: 100px;
+          margin-bottom: 5px; }
+        #container figure .edit table tr:nth-child(2) td {
+          width: 100%; }
+          #container figure .edit table tr:nth-child(2) td .uploadfile {
+            width: 50px;
+            height: 22px;
+            background: linear-gradient(to bottom, #f0f0f8 20%, #ccc 80%);
+            border: 1px solid #666;
+            border-radius: 3px; }
+            #container figure .edit table tr:nth-child(2) td .uploadfile:hover {
+              background: linear-gradient(to bottom, #d5deee 20%, #a0bdf3 80%);
+              border: 1px solid #6495ED; }
+        #container figure .edit table tr:last-child button {
+          display: inline-block;
+          width: 80px;
+          height: 30px;
+          background: linear-gradient(to bottom right, #6495ED, #4169E1, #6495ED);
+          color: #fff;
+          border-radius: 3px;
+          border: 1px solid #4169E1;
+          font-size: 15px;
+          initial-letter: 2px;
+          letter-spacing: 2px;
+          cursor: pointer; }
+      #container figure .edit .edit_del {
+        display: inline-block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 50%;
+        background: #f52648;
+        right: 10px;
+        top: 10px;
+        text-align: center;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer; }
+  #container footer .screen {
+    display: none;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    opacity: .7;
+    z-index: 66666;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0; }
 
 /*# sourceMappingURL=index.css.map */
