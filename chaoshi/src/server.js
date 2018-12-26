@@ -53,7 +53,7 @@ app.post('/reg',bodyparser.urlencoded({extended:false}),(req,res)=>{
         let user = db.collection('user');
 
         //添加数据
-        user.insert({name:username,password,thetime:Date.now()},(err,result)=>{
+        user.insert({name:username,password,gender:'',birthday:'',more:'',age:'',chname:'',thename:'',word:'',wordlist:'',thetime:Date.now()},(err,result)=>{
             console.log(result);
             if(err){
                 res.send({
