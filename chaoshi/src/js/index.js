@@ -1,5 +1,6 @@
 let sublists = document.querySelector('.sublists'); // 商品列表按钮
 let maincontent = document.querySelector('.main-content'); // 商品列表主要内容
+maincontent.innerHTML ='';
 sublists.onclick = ()=>{
     if(Cookie.get('usname')){
             maincontent.innerHTML = `
